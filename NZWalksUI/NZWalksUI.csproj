@@ -20,5 +20,9 @@
     <Folder Include="Views\Regions\" />
     <Folder Include="Models\DTO\" />
     <Folder Include="Views\Walks\" />
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\images\" />
   </ItemGroup>
 </Project>
