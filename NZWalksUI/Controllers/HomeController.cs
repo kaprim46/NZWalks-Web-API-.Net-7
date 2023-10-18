@@ -37,6 +37,21 @@ public class HomeController : Controller
         return View(response);
     }
 
+
+    public async Task<IActionResult> Details(Guid id)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var httpResponseMessage = await client.GetAsync($"https://localhost:7094/api/walks/{id.ToString()}");
+        httpResponseMessage.EnsureSuccessStatusCode();
+
+        var stringResponse = await httpResponseMessage.Content.ReadFromJsonAsync<WalksDTO>();
+        if (stringResponse is not null)
+        {
+            return View(stringResponse);
+        }
+        return View(null);
+    }
+
     public IActionResult Privacy()
     {
         return View();

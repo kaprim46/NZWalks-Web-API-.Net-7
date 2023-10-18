@@ -1,0 +1,77 @@
+@model WalksDTO
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3 class="text-primary mt-3 mb-3">Details</h3>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="form-group">
+                    <img src="@Model.WalkImage" class="img-thumbnail" style="width:450px;height:500px;" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="row mb-1">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Walk Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <input asp-for="Name" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Difficulty</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <input asp-for="Difficulty.Name" class="form-control" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-1">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Length In KM</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <input asp-for="LengthInKm" class="form-control" readonly />
+                    </div>
+                </div>
+
+                <div class="row mb-1">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Region Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <input asp-for="Region.Name" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Region Code</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <input asp-for="Region.Code" class="form-control" readonly />
+                    </div>
+                </div>
+                
+                <div class="row mb-1">
+                    <div class="col-sm-3">
+                        <p class="mb-0">@Html.DisplayNameFor(model => model.Description)</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <textarea asp-for="Description" class="form-control" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-dark">Return to Home</a>
+</div>
