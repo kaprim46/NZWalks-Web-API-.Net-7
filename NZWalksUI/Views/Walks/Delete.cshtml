@@ -1,0 +1,43 @@
+@model WalksDTO
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="mt-3 text-dnager">Delete Walks</h1>
+<form method="post">
+    <input asp-for="Id" hidden />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mt-3">
+        <label class="form-label">Name</label>
+        <input asp-for="Name" class="form-control border-0 shadow" readonly/>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Length In Km</label>
+        <input asp-for="LengthInKm" class="form-control border-0 shadow" readonly/>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Image Url</label>
+        <input asp-for="WalkImage" class="form-control border-0 shadow" readonly/>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control border-0 shadow" readonly></textarea>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Regions</label>
+        <input asp-for="@Model.Region.Name" class="form-select border-0 shadow" readonly/>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Difficulties</label>
+        <input asp-for="@Model.Difficulty.Name" class="form-select border-0 shadow" readonly/>
+    </div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-success">Delete</button>
+        <a asp-controller="Walks" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </div>
+</form>

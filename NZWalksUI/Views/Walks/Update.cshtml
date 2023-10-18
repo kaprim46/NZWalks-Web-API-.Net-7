@@ -1,0 +1,56 @@
+@model UpdateWalksViewModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1 class="mt-3">Update Walks</h1>
+<form method="post">
+    <input asp-for="WalksDTO.Id" hidden />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mt-3">
+        <label class="form-label">Name</label>
+        <input asp-for="walksUpdateDTO.Name" class="form-control border-0 shadow" />
+        <span asp-validation-for="walksUpdateDTO.Name" class="text-danger"></span>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Length In Km</label>
+        <input asp-for="walksUpdateDTO.LengthInKm" class="form-control border-0 shadow" />
+        <span asp-validation-for="walksUpdateDTO.LengthInKm" class="text-danger"></span>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Image Url</label>
+        <input asp-for="walksUpdateDTO.WalkImage" class="form-control border-0 shadow" />
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Description</label>
+        <textarea asp-for="walksUpdateDTO.Description" class="form-control border-0 shadow"></textarea>
+        <span asp-validation-for="walksUpdateDTO.Description" class="text-danger"></span>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Regions</label>
+        <select asp-for="walksUpdateDTO.RegionId" asp-items="@Model.RegionsList" class="form-select border-0 shadow">
+            <option disabled selected>--Select Region--</option>
+        </select>
+        <span asp-validation-for="walksUpdateDTO.RegionId" class="text-danger"></span>
+    </div>
+
+    <div class="mt-3">
+        <label class="form-label">Difficulties</label>
+        <select asp-for="walksUpdateDTO.DifficultyId" asp-items="@Model.DifficultiesList" class="form-select border-0 shadow">
+            <option disabled selected>--Select Difficulty--</option>
+        </select>
+        <span asp-validation-for="walksUpdateDTO.DifficultyId" class="text-danger"></span>
+    </div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-controller="Walks" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

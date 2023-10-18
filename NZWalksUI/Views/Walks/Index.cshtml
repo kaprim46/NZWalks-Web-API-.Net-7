@@ -1,0 +1,46 @@
+@model IEnumerable<WalksDTO>
+
+
+<div class="row mt-3">
+    <div class="col-6">
+        <h3 class="text-primary">New Zeland Walks</h3>
+    </div>
+    
+    <div class="d-flex justify-content-end col-6">
+        <a class="btn btn-primary" asp-controller="Walks" asp-action="Create">Add Region</a>
+    </div>
+</div>
+
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Region</th>
+            <th>Length</th>
+            <th>Difficulty</th>
+            <th>Region Code</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var walks in Model)
+         {
+                <tr>
+                    <td>@walks.Name</td>
+                    <td>
+                        <img src="@walks.WalkImage" class="rounded-circle" style="width:60px;height:60px;" />
+                    </td>
+                    <td>@walks.Region.Name</td>
+                    <td>@walks.LengthInKm KM</td>
+                    <td>@walks.Difficulty.Name</td>
+                    <td>@walks.Region.Code</td>
+                    <td>
+                        <a class="btn btn-warning" asp-route-id="@walks.Id" asp-controller="Walks" asp-action="Update">Edit</a>
+                        <a class="btn btn-danger" asp-route-id="@walks.Id" asp-controller="Walks" asp-action="Delete">Delete</a>
+                    </td>
+                </tr>
+         }
+    </tbody>
+</table>
